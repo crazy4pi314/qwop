@@ -523,11 +523,11 @@ Or to report a bug or request something new, make an issue.
 .. highlight:: python
 
 
-.. |GHA tests| image:: https://github.com/scottclowe/python-template-repo/workflows/tests/badge.svg
-   :target: https://github.com/scottclowe/python-template-repo/actions?query=workflow%3Atests
+.. |GHA tests| image:: https://github.com/crazy4pi314/qwop/workflows/tests/badge.svg
+   :target: https://github.comcrazy4pi314/qwop/actions?query=workflow%3Atests
    :alt: GHA Status
-.. |Codecov report| image:: https://codecov.io/github/scottclowe/python-template-repo/coverage.svg?branch=master
-   :target: https://codecov.io/github/scottclowe/python-template-repo?branch=master
+.. |Codecov report| image:: https://codecov.io/github/crazy4pi314/qwop/coverage.svg?branch=master
+   :target: https://codecov.io/github/crazy4pi314/qwop?branch=master
    :alt: Coverage
 .. |pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
    :target: https://github.com/pre-commit/pre-commit

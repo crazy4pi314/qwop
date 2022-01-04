@@ -1,11 +1,11 @@
 """
-Tests for module in package_name.
+Tests for module in qwop.
 """
 import math
 
 import numpy as np
 
-# from package_name.module import cubic_rectification
+# from qwop.module import cubic_rectification
 from ..module import cubic_rectification
 from .base_test import BaseTestCase, unittest
 
