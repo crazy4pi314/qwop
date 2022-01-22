@@ -17,5 +17,6 @@ dependencies:
 - scikit-learn
 - ipykernel
 - pip:
+  - cirq
   - retworkx
   - qiskit==0.31
