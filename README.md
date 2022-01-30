@@ -1,6 +1,9 @@
 # qwop : tools to help you work with QIR in Python
 
 _EXPERIMENTAL_
+
+The point of the project is to help you not need this project.
+
 This package is intended to be a collection of tools/utilities that allow
 developers to work with [QIR](https://github.com/qir-alliance/qir-spec) in Python and add functionality to their own
 projects. The primary dependency is on [pyQIR](https://github.com/qir-alliance/pyqir) for the core Python - QIR conversion implementation.

@@ -1,0 +1,21 @@
+name: pyqir-dev
+channels:
+- conda-forge
+dependencies:
+- tox
+- pip
+- llvm=11
+- llvm-tools=11
+- llvmdev=11
+- notebook
+- matplotlib
+- qutip
+# Qiskit dependencies
+- scipy>=1.0
+- dill
+- scikit-learn
+- ipykernel
+- pip:
+  - cirq
+  - retworkx
+  - qiskit==0.31
