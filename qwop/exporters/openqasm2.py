@@ -7,6 +7,7 @@ OpenQASM2.0 exporter
 Implements a CircuitLikeExporter for a QIR block to the OpenQASM2.0 specification.
 """
 from typing import List, Any, Dict, Optional
+import pyqir_parser as pqp
 
 from qwop.exporters.interface import CircuitLikeExporter, _resolve_id
 __all__ = ["OpenQasm20Exporter"]

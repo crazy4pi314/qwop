@@ -15,7 +15,10 @@ dependencies:
 - dill
 - scikit-learn
 - ipykernel
+- pygraphviz
 - pip:
   - cirq
   - retworkx
   - qiskit==0.31
+  - networkx[default]
+  - pyvis

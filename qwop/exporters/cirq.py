@@ -9,15 +9,15 @@ Implements a CircuitLikeExporter for a QIR block to the Circ framework.
 from typing import Any, Callable, Dict, List, Optional
 import pyqir_parser as pqp
 from qwop._optional_deps import cirq as cq
-from qwop.exporters.interface import CircuitLikeExporter, _resolve_id
+import qwop.exporters.interface as interface
 
 __all__ = ["CirqExporter"] if cq is not None else []
 
         
 def _qubit_from_id(qubit) -> cq.LineQubit:
-    return cq.LineQubit(_resolve_id(qubit))
+    return cq.LineQubit(interface._resolve_id(qubit))
 
-class CirqExporter(CircuitLikeExporter["cq.Circuit"]):
+class CirqExporter(interface.CircuitLikeExporter["cq.Circuit"]):
     operations : List[Callable[["cq.ops"], None]]
 
     qubits: Dict[Any, Optional[int]]

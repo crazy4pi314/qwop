@@ -1,12 +1,19 @@
+# -*- coding: utf-8 -*-
 """
-qwop module provides utilities for working with QIR programs in Python.
+====
+# qwop
+
+This module provides a high-level interface for working with QIR programs and
+other Python based quantum computing tools.
+This file contains some misc utilities and a abstract class to help structure
+specific exporters.
+====
 """
 
 from abc import ABCMeta, abstractmethod
 
 from typing import (
-    Any, Callable, Dict, List, Literal, Optional, Union, Generic,
-    TypeVar, overload, TYPE_CHECKING
+    Any, Literal, Optional, Union, Generic, TypeVar, overload, TYPE_CHECKING
 )
 
 import pyqir_parser as pqp
