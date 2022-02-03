@@ -9,10 +9,10 @@ Implements a CircuitLikeExporter for a QIR block to the OpenQASM2.0 specificatio
 from typing import List, Any, Dict, Optional
 import pyqir_parser as pqp
 
-from qwop.exporters.interface import CircuitLikeExporter, _resolve_id
+from . import interface as _interface
 __all__ = ["OpenQasm20Exporter"]
 
-class OpenQasm20Exporter(CircuitLikeExporter[str]):
+class OpenQasm20Exporter(_interface.CircuitLikeExporter[str]):
     header: List[str]
     lines: List[str]
 
@@ -43,13 +43,13 @@ class OpenQasm20Exporter(CircuitLikeExporter[str]):
         self._export_lines()
 
     def qubit_as_expr(self, qubit) -> str:
-        id_qubit = _resolve_id(qubit)
+        id_qubit = _interface._resolve_id(qubit)
         if id_qubit not in self.qubits:
             self.qubits[id_qubit] = len(self.qubits)
         return f"{self.qreg}[{self.qubits[id_qubit]}]"
 
     def result_as_expr(self, result) -> str:
-        id_result = _resolve_id(result)
+        id_result = _interface._resolve_id(result)
         if id_result not in self.results:
             self.results[id_result] = len(self.results)
         return f"{self.creg}[{self.results[id_result]}]"

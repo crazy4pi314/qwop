@@ -1,4 +1,4 @@
-name: pyqir-dev
+name: qwop
 channels:
 - conda-forge
 dependencies:

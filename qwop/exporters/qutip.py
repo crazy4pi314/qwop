@@ -12,10 +12,10 @@ import pyqir_parser as pqp
 TOutput = TypeVar('TOutput')
 
 from qwop._optional_deps import qutip as qt
-from qwop.exporters.interface import CircuitLikeExporter, _resolve
+from . import interface as _interface
 
 __all__ = ["QuTiPExporter"] if qt is not None else []
-class QuTiPExporter(CircuitLikeExporter["qt.qip.circuit.QubitCircuit"]):
+class QuTiPExporter(_interface.CircuitLikeExporter["qt.qip.circuit.QubitCircuit"]):
     actions: List[Callable[["qt.qip.circuit.QubitCircuit"], None]]
 
     qubits: Dict[Any, int]
@@ -41,13 +41,13 @@ class QuTiPExporter(CircuitLikeExporter["qt.qip.circuit.QubitCircuit"]):
         return circuit
 
     def qubit_as_expr(self, qubit) -> str:
-        return repr(_resolve(qubit, self.qubits))
+        return repr(_interface._resolve(qubit, self.qubits))
 
     def result_as_expr(self, result) -> str:
-        return repr(_resolve(result, self.results))
+        return repr(_interface._resolve(result, self.results))
 
     def on_simple_gate(self, name, *qubits) -> None:
-        targets = [_resolve(qubit, self.qubits) for qubit in qubits]
+        targets = [_interface._resolve(qubit, self.qubits) for qubit in qubits]
         self.actions.append(lambda circuit:
             circuit.add_gate(
                 self.gate_names[name],
@@ -56,8 +56,8 @@ class QuTiPExporter(CircuitLikeExporter["qt.qip.circuit.QubitCircuit"]):
         )
 
     def on_measure(self, qubit, result) -> None:
-        targets = [_resolve(qubit, self.qubits)]
-        classical_store = _resolve(result, self.results)
+        targets = [_interface._resolve(qubit, self.qubits)]
+        classical_store = _interface._resolve(result, self.results)
         self.actions.append(lambda circuit:
             circuit.add_measurement(
                 "MZ",

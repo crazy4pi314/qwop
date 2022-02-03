@@ -18,10 +18,6 @@ from typing import (
 
 import pyqir_parser as pqp
 
-import qwop.exporters.cirq as _cirq_ex
-import qwop.exporters.openqasm2 as _openqasm2_ex
-import qwop.exporters.qiskit as _qiskit_ex
-import qwop.exporters.qutip as _qutip_ex
 from qwop._optional_deps import qiskit as qk, cirq, qutip as qt
 
 TOutput = TypeVar('TOutput')
@@ -81,7 +77,7 @@ def export_block(block: pqp.QirBlock, to: CircuitLikeExporter[TOutput]) -> Optio
 def export_block(block: pqp.QirBlock, to: Literal["openqasm2"]) -> Optional[str]: ...
 if TYPE_CHECKING or qk is not None:
     @overload
-    def export_block(block: pqp.QirBlock, to: Literal["qiskit"]) -> Optional[qk.Circuit]: ...
+    def export_block(block: pqp.QirBlock, to: Literal["qiskit"]) -> Optional[qk.QuantumCircuit]: ...
 if cirq is not None:
     @overload
     def export_block(block: pqp.QirBlock, to: Literal["cirq"]) -> Optional[cirq.Circuit]: ...
@@ -90,6 +86,11 @@ if qt is not None:
     def export_block(block: pqp.QirBlock, to: Literal["qutip"]) -> Optional[qt.qip.circuit.QubitCircuit]: ...
 
 def export_block(block, to):
+    import qwop.exporters.cirq as _cirq_ex
+    import qwop.exporters.openqasm2 as _openqasm2_ex
+    import qwop.exporters.qiskit as _qiskit_ex
+    import qwop.exporters.qutip as _qutip_ex
+
     if to == "openqasm2":
         exporter = _openqasm2_ex.OpenQasm20Exporter
     if qk is not None and to == "qiskit":

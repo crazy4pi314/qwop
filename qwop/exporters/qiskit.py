@@ -6,17 +6,17 @@ Qiskit exporter
 
 Implements a CircuitLikeExporter for a QIR block to the Qiskit framework.
 """
-from qwop._optional_deps import qiskit as qk
-import qwop.exporters.interface
-import qwop.exporters.openqasm2 as openqasm2
+from .._optional_deps import qiskit as qk
+from . import interface as _interface
+from . import openqasm2 as _oq2
 import pyqir_parser as pqp
 
 __all__ = ["QiskitExporter"] if qk is not None else []
 
 #TODO: make a direct exporter, not through openqasm2
-class QiskitExporter(qwop.exporters.interface.CircuitLikeExporter["qk.QuantumCircuit"]):
+class QiskitExporter(_interface.CircuitLikeExporter["qk.QuantumCircuit"]):
     def __init__(self, block : pqp.QirBlock):
-        self.oq2_exporter = openqasm2.OpenQasm20Exporter(block)
+        self.oq2_exporter = _oq2.OpenQasm20Exporter(block)
     def qubit_as_expr(self, qubit) -> str:
         return self.oq2_exporter.qubit_as_expr(qubit)
     def result_as_expr(self, result) -> str:
@@ -29,4 +29,3 @@ class QiskitExporter(qwop.exporters.interface.CircuitLikeExporter["qk.QuantumCir
         return self.oq2_exporter.on_simple_gate(name, *qubits)
     def export(self) -> "qk.QuantumCircuit":
         return qk.QuantumCircuit.from_qasm_str(self.oq2_exporter.export())
-        
