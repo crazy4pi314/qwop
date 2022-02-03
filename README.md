@@ -25,5 +25,5 @@ The primary dependency is on [pyQIR](https://github.com/qir-alliance/pyqir) for 
 
 - Current project setup requires installing pyqir wheels from GH releases, qwop is currently build against release 0.0.1 of pyqir.
 - For a development setup, see [CONTRIBUTING.md](CONTRIBUTING.md).
-- Conversion tools inspired by [PR](https://github.com/microsoft/qsharp-compiler/pull/1221/files) by @cgranade
+- Conversion tools inspired by [PR](https://github.com/microsoft/qsharp-compiler/pull/1221/files)
   
